@@ -14,7 +14,7 @@ import (
 var username string = "anon"
 
 func main() {
-	u := url.URL{Scheme: "ws", Host: "192.168.3.33:5000", Path: "/echo"}
+	u := url.URL{Scheme: "ws", Host: "10.192.209.51:5000", Path: "/echo"}
 	log.Printf("\nconnecting to %s", u.String())
 	fmt.Println("Use '/setname ...' to set nickname")
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), nil)

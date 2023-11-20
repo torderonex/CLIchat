@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 	"net/http"
+	"slices"
 
 	"github.com/gorilla/websocket"
-	"golang.org/x/exp/slices"
 )
 
 var connections []*websocket.Conn
@@ -30,7 +30,7 @@ func sendmessage(w http.ResponseWriter, r *http.Request) {
 		closeConn(conn)
 		return
 	}
-	if !slices.Contains[*websocket.Conn](connections, conn) {
+	if !slices.Contains[[]*websocket.Conn, *websocket.Conn](connections, conn) {
 		connections = append(connections, conn)
 	}
 	for {
